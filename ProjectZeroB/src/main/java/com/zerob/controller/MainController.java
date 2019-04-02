@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 	
 	@GetMapping("/")
-	public String index() {
-		return "index";
+	public String auth() {
+		return "auth/auth";
+	}
+	
+	@GetMapping("/main")
+	public String main() {
+		return "main/main";
 	}
 }
