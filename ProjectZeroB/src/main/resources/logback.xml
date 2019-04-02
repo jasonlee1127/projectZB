@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logback java config 연결 방식 -->
+<!-- 정확히 내용 파악 후 작성 예정. -->
+<!-- <configuration debug="true"> -->
+<!-- 	<contextListener class="com.zerob.configuration.CustomLoggerContextListener"/> -->
+<!-- </configuration> -->
+
+<configuration>
+    <property name="LOG_PATH" value="/home/zero"/>
+ 
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="INFO_ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/info.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+    
+    <!-- Application Loggers -->
+    <logger name="com.zerob">
+        <level value="debug" />
+    </logger>
+    
+    <!-- 3rdparty Loggers -->
+    <logger name="org.springframework.core">
+        <level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.beans">
+        <level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.context">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.web">
+        <level value="info" />
+    </logger>
+    
+    <!-- hikaricp logs -->
+    <logger name="com.zaxxer.hikari" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="INFO_ROLLING"/>
+    </root>
+</configuration>
