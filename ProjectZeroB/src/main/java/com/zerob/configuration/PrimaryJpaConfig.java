@@ -153,15 +153,15 @@ public class PrimaryJpaConfig {
         /**
          * db 접속 주소
          */
-        properties.setProperty("url", "jdbc:oracle:thin:@:1521:orcl");
+        properties.setProperty("url", "jdbc:oracle:thin:@39.115.145.229:1521:orcl");
         /**
          * db 접속 사용자 아이디
          */
-        properties.setProperty("user", "");
+        properties.setProperty("user", "auctionwini");
         /**
          * db 접속 사용자 비밀번호
          */
-        properties.setProperty("password", "");
+        properties.setProperty("password", "auction");
         
         return properties;
     }
