@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Project Zero</title>
+        <title>Project Zero!!!</title>
     </head>
     <body>
     	main
