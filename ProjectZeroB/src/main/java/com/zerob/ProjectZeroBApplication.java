@@ -17,6 +17,6 @@ public class ProjectZeroBApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectZeroBApplication.class, args);
-	}
+	} 
 
 }
